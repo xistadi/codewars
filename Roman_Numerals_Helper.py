@@ -5,6 +5,7 @@ class RomanNumerals:
         10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I'}
 
     def to_roman(self, num):
+	   # из int в roman
         result = ''
         for key, value in self.dict.items():
             result += (num // key) * value
@@ -13,13 +14,14 @@ class RomanNumerals:
 
     
     def from_roman(self, str):
+	   # из roman в int
         result = 0
         i = 0
         while i < len(self.dict):
             reg = '^' + list(self.dict.values())[i]
-            if re.search(reg, str) != None:
+            if re.search(reg, str):
                 result += list(self.dict.keys())[i]
-                str = re.sub(reg,'',str) 
+                str = re.sub(reg, '', str) 
             else:
                 i += 1
         return result
